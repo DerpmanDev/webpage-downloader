@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Cloner</title>
+</head>
+<body>
+    <h1>Website Cloner</h1>
+    <form id="clone-form">
+        <label for="url">Enter the URL of the website:</label>
+        <input type="url" id="url" name="url" required>
+        <button type="submit">Clone Website</button>
+    </form>
+    <div id="status"></div>
+    <script>
+        document.getElementById('clone-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const url = document.getElementById('url').value;
+            const statusDiv = document.getElementById('status');
+            statusDiv.innerText = 'Cloning...';
+
+            try {
+                const response = await fetch('/clone', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url })
+                });
+                const result = await response.json();
+                if (response.ok) {
+                    statusDiv.innerText = 'Cloning completed successfully!';
+                } else {
+                    statusDiv.innerText = 'Error: ' + result.message;
+                }
+            } catch (error) {
+                statusDiv.innerText = 'Error: ' + error.message;
+            }
+        });
+    </script>
+</body>
+</html>
