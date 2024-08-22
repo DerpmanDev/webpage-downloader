@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Webpage Downloader">
+	<h1>Website Cloner</h1>
+    <form id="clone-form">
+        <label for="url">Enter the URL of the website:</label>
+        <input type="url" id="url" name="url" required>
+        <button type="submit">Clone Website</button>
+    </form>
+    <div id="status"></div>
+	<script src="/assets/js/main.js" is:inline></script>
+</Layout>

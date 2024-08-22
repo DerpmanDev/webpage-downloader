@@ -1,16 +1,18 @@
 {
-  "name": "webpage-downloader",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "pink-parsec",
+  "type": "commonjs",
+  "version": "0.0.1",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "astro dev",
+    "start": "npx astro build && npx tsc && node dist/server.js",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
+    "@astrojs/check": "^0.9.3",
     "@types/node": "^22.5.0",
+    "astro": "^4.14.4",
     "axios": "^1.7.4",
     "cheerio": "^1.0.0",
     "express": "^4.19.2",
